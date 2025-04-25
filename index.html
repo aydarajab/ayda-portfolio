@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ayda Rajab | Portfolio</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: 'Poppins', sans-serif; background: linear-gradient(to right, #e0f2ff, #f0f9ff); color: #222; }
+    .topnav { background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 10px 20px; position: sticky; top: 0; }
+    .topnav a { color: #0366d6; margin: 0 15px; text-decoration: none; font-weight: 600; }
+    .topnav a:hover { text-decoration: underline; }
+    .header { text-align: center; padding: 100px 20px 50px; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 3em; }
+    h2, h3 { color: #0366d6; }
+    .container { max-width: 1000px; margin: auto; padding: 20px; }
+    .section { background: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .button { background: #0366d6; color: white; padding: 10px 20px; text-decoration: none; border-radius: 25px; display: inline-block; margin-top: 15px; }
+    .button:hover { background: #024ea2; }
+    footer { text-align: center; padding: 20px; font-size: 14px; color: #777; background: #f9f9f9; }
+    footer a { color: #0366d6; text-decoration: none; padding: 0 10px; }
+    footer a:hover { text-decoration: underline; }
+    #progressBar { height: 5px; background: #0366d6; width: 0%; position: fixed; top:0; left:0; z-index: 999; }
+
+    .code-block { max-height: 0; overflow: hidden; transition: all 0.5s ease; opacity: 0; background: #f5f5f5; padding: 0 15px; border-radius: 10px; font-family: monospace; font-size: 15px; }
+    .code-block code { display: block; padding: 15px 0; }
+  </style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<div class="topnav">
+  <a href="#home">Home</a>
+  <a href="#resume">Resume</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<section class="header" id="home">
+  <h1>Ayda Rajab</h1>
+  <h2>Software Engineer | Data Analyst</h2>
+  <p>Blending creative innovation and technical precision to build impactful software and data solutions.</p>
+</section>
+
+<section class="container" id="resume">
+  <div class="section">
+    <h2>Resume</h2>
+    <p>Professional Experience, Skills, Certifications available here.</p>
+    <a class="button" href="assets/Ayda_Rajab_Resume.pdf" download>Download My Resume</a>
+  </div>
+</section>
+
+<section class="container" id="projects">
+  <div class="section">
+    <h2>Featured Projects</h2>
+    <p>Here are examples of my automation, QA, and engineering work:</p>
+
+    <div class="section"><h3>Dynamic Excel/CSV Header Validation</h3><p>Validates file headers dynamically across .xlsx and .csv formats.</p><button onclick="toggleCode('code1')" class="button">View Code</button><pre id="code1" class="code-block"><code>@Then("check headers {string} in {string} sheet and row number {int}") public void checkHeaders(...) throws Exception { /* Parsing */ }</code></pre></div>
+
+    <div class="section"><h3>Click Until Field Matches Expected Value</h3><p>Advanced WebDriverWait clicking until a separate field matches expected value.</p><button onclick="toggleCode('code2')" class="button">View Code</button><pre id="code2" class="code-block"><code>@Then("click on field {string} until other field {string} equals {string}") public void waitElementActionContainsTextDisplayed(...) { /* Waiting Logic */ }</code></pre></div>
+
+    <div class="section"><h3>PDF Content Validation Automation</h3><p>Extracts and validates dynamic fields inside downloaded PDFs.</p><button onclick="toggleCode('code3')" class="button">View Code</button><pre id="code3" class="code-block"><code>@Then("Verify if the last downloaded pdf document contains {string} variable data in section {string}") public void validatePDFContentAfterDownload(...) throws Exception { /* PDF Parse */ }</code></pre></div>
+
+    <div class="section"><h3>Automated Email Parsing and Validation</h3><p>Connects to IMAP, parses emails (plain text and HTML), validates content dynamically.</p><button onclick="toggleCode('code4')" class="button">View Code</button><pre id="code4" class="code-block"><code>@Then("Print last email and verify text contains {string} variable data") public void properties(...) { /* Email Parse */ }</code></pre></div>
+
+    <div class="section"><h3>Dynamic SQL Query Runner and Data Export</h3><p>Runs dynamic queries and exports result into SQL insert statements.</p><button onclick="toggleCode('code5')" class="button">View Code</button><pre id="code5" class="code-block"><code>@Then("run {string} query for {string} app and store results in {string} file") public void runQuery(...) throws Throwable { /* SQL Export */ }</code></pre></div>
+
+    <div class="section"><h3>ZIP Extraction and Regex File Validation</h3><p>Automates unzipping downloaded files and regex-validates extracted filenames.</p><button onclick="toggleCode('code6')" class="button">View Code</button><pre id="code6" class="code-block"><code>@Then("Extract zip from last downloaded file into {string} folder") public void extractZip(...) throws IOException { /* Unzip */ }</code></pre></div>
+
+  </div>
+</section>
+
+<section class="container" id="contact">
+  <div class="section">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required style="width:100%; padding:10px; margin-bottom:10px;"><br>
+      <input type="email" placeholder="Your Email" required style="width:100%; padding:10px; margin-bottom:10px;"><br>
+      <textarea placeholder="Your Message" rows="5" required style="width:100%; padding:10px;"></textarea><br>
+      <button type="submit" class="button">Send</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  © 2025 Ayda Rajab |
+  <a href="#home">Home</a> |
+  <a href="#resume">Resume</a> |
+  <a href="#projects">Projects</a> |
+  <a href="#contact">Contact</a>
+</footer>
+
+<script>
+window.onscroll = function() {scrollProgress()};
+function scrollProgress() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.getElementById("progressBar").style.width = scrolled + "%";
+}
+
+function toggleCode(id) {
+  var block = document.getElementById(id);
+  if (block.style.maxHeight) { block.style.maxHeight = null; block.style.opacity = 0; }
+  else { block.style.maxHeight = block.scrollHeight + "px"; block.style.opacity = 1; }
+}
+
+window.onload = function() {
+  document.querySelectorAll('pre code').forEach((block) => {
+    block.innerHTML = block.innerHTML.replace(/(public|private|protected|class|void|new|throws|return)/g, '<span style="color:#d6336c;">$1</span>')
+                                     .replace(/(if|else|for|while|try|catch|break|continue)/g, '<span style="color:#f76707;">$1</span>')
+                                     .replace(/(String|int|boolean|double|float|List|ArrayList|Map|HashMap)/g, '<span style="color:#0ca678;">$1</span>');
+  });
+};
+</script>
+
+</body>
+</html>
