@@ -57,67 +57,19 @@
   <div class="section">
     <h2>Featured Projects</h2>
     <p>Here are examples of my automation, QA, and engineering work:</p>
-    
-    <div class="section">
-      <h3>Dynamic Excel/CSV Header Validation</h3>
-      <p>Validates file headers dynamically across .xlsx and .csv formats.</p>
-      <button onclick="toggleCode('code1')" class="button">View Code</button>
-      <pre id="code1" class="code-block"><code>@Then(&quot;check headers {string} in {string} sheet and row number {int}&quot;)
-public void checkHeaders(...) throws Exception {
-    // Parsing logic
-}</code></pre>
-    </div>
-    
-    <div class="section">
-      <h3>Click Until Field Matches Expected Value</h3>
-      <p>Clicks a field repeatedly until another field matches a value.</p>
-      <button onclick="toggleCode('code2')" class="button">View Code</button>
-      <pre id="code2" class="code-block"><code>@Then(&quot;click on field {string} until other field {string} equals {string}&quot;)
-public void waitUntilFieldMatches(...) {
-    // WebDriverWait logic
-}</code></pre>
-    </div>
-    
-    <div class="section">
-      <h3>PDF Content Validation Automation</h3>
-      <p>Extracts and validates values from downloaded PDF documents.</p>
-      <button onclick="toggleCode('code3')" class="button">View Code</button>
-      <pre id="code3" class="code-block"><code>@Then(&quot;Verify if the last downloaded pdf document contains {string} variable data in section {string}&quot;)
-public void validatePDF(...) throws Exception {
-    // PDF parsing
-}</code></pre>
-    </div>
-    
-    <div class="section">
-      <h3>Automated Email Parsing and Validation</h3>
-      <p>Parses Gmail inbox via IMAP and checks for expected content.</p>
-      <button onclick="toggleCode('code4')" class="button">View Code</button>
-      <pre id="code4" class="code-block"><code>@Then(&quot;Print last email and verify text contains {string} variable data&quot;)
-public void checkEmailContent(...) {
-    // IMAP and message parsing
-}</code></pre>
-    </div>
-    
-    <div class="section">
-      <h3>Dynamic SQL Query Runner and Data Export</h3>
-      <p>Runs SQL query and exports result as INSERT statements.</p>
-      <button onclick="toggleCode('code5')" class="button">View Code</button>
-      <pre id="code5" class="code-block"><code>@Then(&quot;run {string} query for {string} app and store results in {string} file&quot;)
-public void runQuery(...) throws Throwable {
-    // SQL &amp; export
-}</code></pre>
-    </div>
-    
-    <div class="section">
-      <h3>ZIP Extraction and Regex File Validation</h3>
-      <p>Extracts ZIP files and validates content using regex.</p>
-      <button onclick="toggleCode('code6')" class="button">View Code</button>
-      <pre id="code6" class="code-block"><code>@Then(&quot;Extract zip from last downloaded file into {string} folder&quot;)
-public void extractZip(...) throws IOException {
-    // unzip logic
-}</code></pre>
-    </div>
-    
+
+    <div class="section"><h3>Dynamic Excel/CSV Header Validation</h3><p>Validates file headers dynamically across .xlsx and .csv formats.</p><button onclick="toggleCode('code1')" class="button">View Code</button><pre id="code1" class="code-block"><code>@Then("check headers {string} in {string} sheet and row number {int}") public void checkHeaders(...) throws Exception { /* Parsing */ }</code></pre></div>
+
+    <div class="section"><h3>Click Until Field Matches Expected Value</h3><p>Advanced WebDriverWait clicking until a separate field matches expected value.</p><button onclick="toggleCode('code2')" class="button">View Code</button><pre id="code2" class="code-block"><code>@Then("click on field {string} until other field {string} equals {string}") public void waitElementActionContainsTextDisplayed(...) { /* Waiting Logic */ }</code></pre></div>
+
+    <div class="section"><h3>PDF Content Validation Automation</h3><p>Extracts and validates dynamic fields inside downloaded PDFs.</p><button onclick="toggleCode('code3')" class="button">View Code</button><pre id="code3" class="code-block"><code>@Then("Verify if the last downloaded pdf document contains {string} variable data in section {string}") public void validatePDFContentAfterDownload(...) throws Exception { /* PDF Parse */ }</code></pre></div>
+
+    <div class="section"><h3>Automated Email Parsing and Validation</h3><p>Connects to IMAP, parses emails (plain text and HTML), validates content dynamically.</p><button onclick="toggleCode('code4')" class="button">View Code</button><pre id="code4" class="code-block"><code>@Then("Print last email and verify text contains {string} variable data") public void properties(...) { /* Email Parse */ }</code></pre></div>
+
+    <div class="section"><h3>Dynamic SQL Query Runner and Data Export</h3><p>Runs dynamic queries and exports result into SQL insert statements.</p><button onclick="toggleCode('code5')" class="button">View Code</button><pre id="code5" class="code-block"><code>@Then("run {string} query for {string} app and store results in {string} file") public void runQuery(...) throws Throwable { /* SQL Export */ }</code></pre></div>
+
+    <div class="section"><h3>ZIP Extraction and Regex File Validation</h3><p>Automates unzipping downloaded files and regex-validates extracted filenames.</p><button onclick="toggleCode('code6')" class="button">View Code</button><pre id="code6" class="code-block"><code>@Then("Extract zip from last downloaded file into {string} folder") public void extractZip(...) throws IOException { /* Unzip */ }</code></pre></div>
+
   </div>
 </section>
 
@@ -141,6 +93,7 @@ public void extractZip(...) throws IOException {
   <a href="#contact">Contact</a>
 </footer>
 
+<!-- Scroll & Code Animation -->
 <script>
 window.onscroll = function() {scrollProgress()};
 function scrollProgress() {
@@ -165,5 +118,27 @@ window.onload = function() {
 };
 </script>
 
+<!-- Landbot Chatbot Embed -->
+<script>
+window.addEventListener('mouseover', initLandbot, { once: true });
+window.addEventListener('touchstart', initLandbot, { once: true });
+var myLandbot;
+function initLandbot() {
+  if (!myLandbot) {
+    var s = document.createElement('script');
+    s.type = "module"
+    s.async = true;
+    s.addEventListener('load', function() {
+      var myLandbot = new Landbot.Livechat({
+        configUrl: 'https://storage.googleapis.com/landbot.site/v3/H-2974405-QAF9156RS2C7SEU5/index.json',
+      });
+    });
+    s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs';
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
+  }
+}
+</script>
+
 </body>
-</html>  
+</html>
