@@ -1,144 +1,405 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ayda Rajab | Portfolio</title>
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-  <style>
-    html { scroll-behavior: smooth; }
-    body { margin: 0; font-family: 'Poppins', sans-serif; background: linear-gradient(to right, #e0f2ff, #f0f9ff); color: #222; }
-    .topnav { background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 10px 20px; position: sticky; top: 0; }
-    .topnav a { color: #0366d6; margin: 0 15px; text-decoration: none; font-weight: 600; }
-    .topnav a:hover { text-decoration: underline; }
-    .header { text-align: center; padding: 100px 20px 50px; }
-    h1 { font-family: 'Playfair Display', serif; font-size: 3em; }
-    h2, h3 { color: #0366d6; }
-    .container { max-width: 1000px; margin: auto; padding: 20px; }
-    .section { background: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    .button { background: #0366d6; color: white; padding: 10px 20px; text-decoration: none; border-radius: 25px; display: inline-block; margin-top: 15px; }
-    .button:hover { background: #024ea2; }
-    footer { text-align: center; padding: 20px; font-size: 14px; color: #777; background: #f9f9f9; }
-    footer a { color: #0366d6; text-decoration: none; padding: 0 10px; }
-    footer a:hover { text-decoration: underline; }
-    #progressBar { height: 5px; background: #0366d6; width: 0%; position: fixed; top:0; left:0; z-index: 999; }
+  <meta name="description" content="Portfolio of Ayda Rajab – Data Engineer & Data Analyst. Automation, QA, and engineering projects." />
+  <meta property="og:title" content="Ayda Rajab | Portfolio" />
+  <meta property="og:description" content="Software Engineer & Data Analyst building impactful software and data solutions." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
 
-    .code-block { max-height: 0; overflow: hidden; transition: all 0.5s ease; opacity: 0; background: #f5f5f5; padding: 0 15px; border-radius: 10px; font-family: monospace; font-size: 15px; }
-    .code-block code { display: block; padding: 15px 0; }
+  <style>
+    :root{
+      --bg: #f6f8fb;
+      --bg-soft: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --brand: #2563eb; /* blue-600 */
+      --brand-600: #1d4ed8;
+      --accent: #22d3ee; /* cyan-400 */
+      --ring: rgba(37,99,235,.35);
+      --card: rgba(255,255,255,.7);
+      --shadow: 0 10px 30px rgba(2, 6, 23, .08);
+      --radius: 18px;
+      --code-bg: #0b1020;
+      --code-text: #e2e8f0;
+      --code-accent: #f59e0b;
+      --maxw: 1080px;
+      --gradient: radial-gradient(1200px 600px at 20% -10%, rgba(34,211,238,.25), rgba(0,0,0,0)), radial-gradient(1000px 600px at 90% 10%, rgba(37,99,235,.18), rgba(0,0,0,0));
+    }
+    [data-theme="dark"]{
+      --bg: #0b1220;
+      --bg-soft: #0f172a;
+      --text: #e5e7eb;
+      --muted: #9aa6b2;
+      --brand: #60a5fa;
+      --brand-600: #3b82f6;
+      --accent: #22d3ee;
+      --ring: rgba(96,165,250,.35);
+      --card: rgba(15,23,42,.6);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --code-bg: #0a0f1c;
+      --code-text: #e5e7eb;
+      --code-accent: #fbbf24;
+      --gradient: radial-gradient(1100px 600px at 15% -10%, rgba(59,130,246,.25), rgba(0,0,0,0)), radial-gradient(1000px 600px at 90% 10%, rgba(34,211,238,.15), rgba(0,0,0,0));
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background: var(--bg);color:var(--text);}
+    .bg-aurora{position:fixed;inset:0;pointer-events:none;background:var(--gradient);filter:saturate(120%);z-index:-1}
+
+    /* Top Nav */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.6);backdrop-filter:saturate(130%) blur(12px);border-bottom:1px solid rgba(2,6,23,.06)}
+    [data-theme="dark"] .nav{background:rgba(2,6,23,.45);border-color:rgba(148,163,184,.08)}
+    .nav-inner{max-width:var(--maxw);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 18px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.2px}
+    .brand .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--accent));box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
+    .nav a{color:var(--text);text-decoration:none;font-weight:600;margin:0 10px;opacity:.9}
+    .nav a:hover{opacity:1}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .hamburger{display:none}
+
+    /* Buttons */
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--brand);color:white;text-decoration:none;font-weight:700;box-shadow:0 6px 20px rgba(37,99,235,.25);transition:transform .15s ease, box-shadow .15s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(37,99,235,.35)}
+    .btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(2,6,23,.08)}
+    [data-theme="dark"] .btn.secondary{border-color:rgba(148,163,184,.18);color:var(--text)}
+
+    /* Progress bar */
+    #progressBar{height:4px;background:linear-gradient(90deg,var(--brand),var(--accent));width:0%;position:fixed;top:0;left:0;z-index:60}
+
+    /* Layout */
+    .container{max-width:var(--maxw);margin:auto;padding:24px}
+    .section{background:var(--card);border:1px solid rgba(2,6,23,.06);box-shadow:var(--shadow);border-radius:var(--radius);padding:28px}
+    [data-theme="dark"] .section{border-color:rgba(148,163,184,.08)}
+    .stack{display:grid;gap:22px}
+
+    /* Hero */
+    .hero{padding:86px 24px 36px;text-align:center}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,64px);margin:0 0 8px;letter-spacing:.2px}
+    .hero h2{font-size:clamp(16px,2.5vw,22px);margin:0;color:var(--muted);font-weight:600}
+    .hero p{max-width:760px;margin:18px auto 26px;font-size:18px;color:var(--muted)}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .badge{padding:8px 12px;border-radius:999px;background:rgba(37,99,235,.10);color:var(--brand);font-weight:700;border:1px solid rgba(37,99,235,.18)}
+    [data-theme="dark"] .badge{background:rgba(96,165,250,.12);border-color:rgba(96,165,250,.25)}
+
+    /* Grid */
+    .grid{display:grid;gap:20px;grid-template-columns:repeat(12,1fr)}
+    .col-12{grid-column:span 12}
+    .col-6{grid-column:span 6}
+    .col-4{grid-column:span 4}
+    @media (max-width: 900px){.col-6{grid-column:span 12}.col-4{grid-column:span 12}}
+
+    /* Headings */
+    h2.section-title{margin:0 0 6px;font-size:24px}
+    p.section-sub{margin:0 0 18px;color:var(--muted)}
+
+    /* Project card */
+    .card{position:relative;overflow:hidden}
+    .card h3{margin:0 0 8px}
+    .code-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .toggle{cursor:pointer;border:none;background:transparent;color:var(--brand);font-weight:800}
+
+    /* Code block */
+    pre{background:var(--code-bg);color:var(--code-text);border-radius:14px;border:1px solid rgba(148,163,184,.15);max-height:0;overflow:hidden;transition:max-height .5s ease, opacity .35s ease;opacity:0;margin:12px 0 0}
+    pre code{display:block;padding:16px;line-height:1.5;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:14px}
+    .token-key{color:#e879f9}
+    .token-flow{color:#f59e0b}
+    .token-type{color:#34d399}
+
+    /* Inputs */
+    .form input,.form textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(2,6,23,.08);background:rgba(255,255,255,.8);color:var(--text);outline:none}
+    .form input:focus,.form textarea:focus{box-shadow:0 0 0 6px var(--ring);border-color:transparent}
+    [data-theme="dark"] .form input,[data-theme="dark"] .form textarea{background:rgba(2,6,23,.35);border-color:rgba(148,163,184,.18)}
+
+    /* Footer */
+    footer{padding:26px;text-align:center;color:var(--muted)}
+    footer a{color:var(--brand);text-decoration:none}
+
+    /* Reveal animations (reduced motion respected) */
+    @media (prefers-reduced-motion: no-preference){
+      .reveal{opacity:0;transform:translateY(10px);transition:opacity .5s ease, transform .5s ease}
+      .reveal.in{opacity:1;transform:none}
+    }
+
+    /* Mobile nav */
+    @media (max-width:720px){
+      .hamburger{display:inline-flex;border:1px solid rgba(2,6,23,.08);padding:8px 10px;border-radius:12px;background:transparent;color:var(--text);cursor:pointer}
+      [data-theme="dark"] .hamburger{border-color:rgba(148,163,184,.18)}
+      .nav-links{display:none;position:absolute;top:58px;left:12px;right:12px;background:var(--card);border:1px solid rgba(2,6,23,.06);border-radius:14px;box-shadow:var(--shadow);padding:12px}
+      .nav-links.open{display:grid}
+      .nav-links a{padding:10px 12px;margin:0;border-radius:10px}
+      .nav-inner{position:relative}
+    }
   </style>
 </head>
 <body>
+  <div class="bg-aurora" aria-hidden="true"></div>
+  <div id="progressBar" aria-hidden="true"></div>
 
-<div id="progressBar"></div>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <a href="#home" class="sr-only" aria-label="Go to home"></a>
+        <span>Ayda Rajab</span>
+      </div>
+      <div class="nav-actions">
+        <div class="nav-links" id="navLinks">
+          <a href="#home">Home</a>
+          <a href="#resume">Resume</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <button class="btn secondary" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
+  </nav>
 
-<div class="topnav">
-  <a href="#home">Home</a>
-  <a href="#resume">Resume</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
-</div>
+  <!-- HERO -->
+  <header class="hero container" id="home">
+    <div class="stack reveal in">
+      <h1>Ayda Rajab</h1>
+      <h2>Software Engineer · Data Analyst</h2>
+      <p>Blending creative innovation and technical precision to build impactful software and data solutions.</p>
+      <div class="badges" aria-label="skills">
+        <span class="badge">SQL</span>
+        <span class="badge">Python</span>
+        <span class="badge">Microsoft Power Platform</span>
+        <span class="badge">Javascript</span>
+        <span class="badge">HTML</span>
+      </div>
+      <div style="margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a class="btn" href="#projects">View Projects</a>
+        <a class="btn secondary" href="assets/Ayda_Rajab_Resume.pdf" download>Download Resume</a>
+      </div>
+    </div>
+  </header>
 
-<section class="header" id="home">
-  <h1>Ayda Rajab</h1>
-  <h2>Software Engineer | Data Analyst</h2>
-  <p>Blending creative innovation and technical precision to build impactful software and data solutions.</p>
-</section>
+  <!-- RESUME -->
+  <section class="container" id="resume">
+    <div class="section reveal">
+      <h2 class="section-title">Resume</h2>
+      <p class="section-sub">Professional Experience, Skills, Certifications.</p>
+      <div class="grid">
+        <div class="col-6">
+          <div class="card">
+            <h3>Overview</h3>
+            <p>End-to-end data & engineering work across automation, analytics, and platform reliability. Obsessed with reducing manual toil and turning data into decisions.</p>
+            <a class="btn" href="assets/Ayda_Rajab_Resume.pdf" download aria-label="Download my resume">Download My Resume</a>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card">
+            <h3>Core Skills</h3>
+            <ul style="margin:0;padding-left:18px;color:var(--muted)">
+              <li>Data Engineering (SQL, Python, ETL/ELT)</li>
+              <li>BI & Visualization (Power BI)</li>
+              <li>QA Automation & Test Design</li>
+              <li>Workflow Tools (Retool, scripts)</li>
+              <li>Web (HTML/CSS/JS)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="container" id="resume">
-  <div class="section">
-    <h2>Resume</h2>
-    <p>Professional Experience, Skills, Certifications available here.</p>
-    <a class="button" href="assets/Ayda_Rajab_Resume.pdf" download>Download My Resume</a>
-  </div>
-</section>
+  <!-- PROJECTS -->
+  <section class="container" id="projects">
+    <div class="section reveal">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-sub">Examples of automation, QA, and engineering work.</p>
 
-<section class="container" id="projects">
-  <div class="section">
-    <h2>Featured Projects</h2>
-    <p>Here are examples of my automation, QA, and engineering work:</p>
+      <div class="stack">
+        <!-- Project Template Card -->
+        <article class="card">
+          <h3>Dynamic Excel/CSV Header Validation</h3>
+          <p>Validates file headers dynamically across .xlsx and .csv formats.</p>
+          <div class="code-actions">
+            <button class="toggle" data-target="code1">View Code</button>
+          </div>
+          <pre id="code1"><code>@Then("check headers {string} in {string} sheet and row number {int}")
+public void checkHeaders(...) throws Exception {
+  // Parsing
+}</code></pre>
+        </article>
 
-    <div class="section"><h3>Dynamic Excel/CSV Header Validation</h3><p>Validates file headers dynamically across .xlsx and .csv formats.</p><button onclick="toggleCode('code1')" class="button">View Code</button><pre id="code1" class="code-block"><code>@Then("check headers {string} in {string} sheet and row number {int}") public void checkHeaders(...) throws Exception { /* Parsing */ }</code></pre></div>
+        <article class="card">
+          <h3>Click Until Field Matches Expected Value</h3>
+          <p>Advanced WebDriverWait clicking until a separate field matches expected value.</p>
+          <div class="code-actions"><button class="toggle" data-target="code2">View Code</button></div>
+          <pre id="code2"><code>@Then("click on field {string} until other field {string} equals {string}")
+public void waitElementActionContainsTextDisplayed(...) {
+  // Waiting Logic
+}</code></pre>
+        </article>
 
-    <div class="section"><h3>Click Until Field Matches Expected Value</h3><p>Advanced WebDriverWait clicking until a separate field matches expected value.</p><button onclick="toggleCode('code2')" class="button">View Code</button><pre id="code2" class="code-block"><code>@Then("click on field {string} until other field {string} equals {string}") public void waitElementActionContainsTextDisplayed(...) { /* Waiting Logic */ }</code></pre></div>
+        <article class="card">
+          <h3>PDF Content Validation Automation</h3>
+          <p>Extracts and validates dynamic fields inside downloaded PDFs.</p>
+          <div class="code-actions"><button class="toggle" data-target="code3">View Code</button></div>
+          <pre id="code3"><code>@Then("Verify if the last downloaded pdf document contains {string} variable data in section {string}")
+public void validatePDFContentAfterDownload(...) throws Exception {
+  // PDF Parse
+}</code></pre>
+        </article>
 
-    <div class="section"><h3>PDF Content Validation Automation</h3><p>Extracts and validates dynamic fields inside downloaded PDFs.</p><button onclick="toggleCode('code3')" class="button">View Code</button><pre id="code3" class="code-block"><code>@Then("Verify if the last downloaded pdf document contains {string} variable data in section {string}") public void validatePDFContentAfterDownload(...) throws Exception { /* PDF Parse */ }</code></pre></div>
+        <article class="card">
+          <h3>Automated Email Parsing and Validation</h3>
+          <p>Connects to IMAP, parses emails (plain text and HTML), validates content dynamically.</p>
+          <div class="code-actions"><button class="toggle" data-target="code4">View Code</button></div>
+          <pre id="code4"><code>@Then("Print last email and verify text contains {string} variable data")
+public void properties(...) {
+  // Email Parse
+}</code></pre>
+        </article>
 
-    <div class="section"><h3>Automated Email Parsing and Validation</h3><p>Connects to IMAP, parses emails (plain text and HTML), validates content dynamically.</p><button onclick="toggleCode('code4')" class="button">View Code</button><pre id="code4" class="code-block"><code>@Then("Print last email and verify text contains {string} variable data") public void properties(...) { /* Email Parse */ }</code></pre></div>
+        <article class="card">
+          <h3>Dynamic SQL Query Runner and Data Export</h3>
+          <p>Runs dynamic queries and exports results into SQL insert statements.</p>
+          <div class="code-actions"><button class="toggle" data-target="code5">View Code</button></div>
+          <pre id="code5"><code>@Then("run {string} query for {string} app and store results in {string} file")
+public void runQuery(...) throws Throwable {
+  // SQL Export
+}</code></pre>
+        </article>
 
-    <div class="section"><h3>Dynamic SQL Query Runner and Data Export</h3><p>Runs dynamic queries and exports result into SQL insert statements.</p><button onclick="toggleCode('code5')" class="button">View Code</button><pre id="code5" class="code-block"><code>@Then("run {string} query for {string} app and store results in {string} file") public void runQuery(...) throws Throwable { /* SQL Export */ }</code></pre></div>
+        <article class="card">
+          <h3>ZIP Extraction and Regex File Validation</h3>
+          <p>Automates unzipping downloaded files and regex-validates extracted filenames.</p>
+          <div class="code-actions"><button class="toggle" data-target="code6">View Code</button></div>
+          <pre id="code6"><code>@Then("Extract zip from last downloaded file into {string} folder")
+public void extractZip(...) throws IOException {
+  // Unzip
+}</code></pre>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <div class="section"><h3>ZIP Extraction and Regex File Validation</h3><p>Automates unzipping downloaded files and regex-validates extracted filenames.</p><button onclick="toggleCode('code6')" class="button">View Code</button><pre id="code6" class="code-block"><code>@Then("Extract zip from last downloaded file into {string} folder") public void extractZip(...) throws IOException { /* Unzip */ }</code></pre></div>
+  <!-- CONTACT -->
+  <section class="container" id="contact">
+    <div class="section reveal">
+      <h2 class="section-title">Contact Me</h2>
+      <p class="section-sub">Let’s build something great together.</p>
+      <form class="form" action="#" method="post" onsubmit="event.preventDefault(); alert('Thanks! I\'ll be in touch.');">
+        <div class="grid">
+          <div class="col-6"><input type="text" name="name" placeholder="Your Name" required /></div>
+          <div class="col-6"><input type="email" name="email" placeholder="Your Email" required /></div>
+          <div class="col-12"><textarea name="message" rows="5" placeholder="Your Message" required></textarea></div>
+        </div>
+        <div style="margin-top:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <button type="submit" class="btn">Send</button>
+          <a href="#home">Back to top</a>
+        </div>
+      </form>
+    </div>
+  </section>
 
-  </div>
-</section>
+  <footer>
+    © 2025 Ayda Rajab · <a href="#home">Home</a> · <a href="#resume">Resume</a> · <a href="#projects">Projects</a> · <a href="#contact">Contact</a>
+  </footer>
 
-<section class="container" id="contact">
-  <div class="section">
-    <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required style="width:100%; padding:10px; margin-bottom:10px;"><br>
-      <input type="email" placeholder="Your Email" required style="width:100%; padding:10px; margin-bottom:10px;"><br>
-      <textarea placeholder="Your Message" rows="5" required style="width:100%; padding:10px;"></textarea><br>
-      <button type="submit" class="button">Send</button>
-    </form>
-  </div>
-</section>
+  <!-- JS: scroll progress, code toggles, reveal, theme, mobile nav, basic highlighting -->
+  <script>
+    // Scroll progress
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progressBar').style.width = scrolled + '%';
+    });
 
-<footer>
-  © 2025 Ayda Rajab |
-  <a href="#home">Home</a> |
-  <a href="#resume">Resume</a> |
-  <a href="#projects">Projects</a> |
-  <a href="#contact">Contact</a>
-</footer>
-
-<!-- Scroll & Code Animation -->
-<script>
-window.onscroll = function() {scrollProgress()};
-function scrollProgress() {
-  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = (winScroll / height) * 100;
-  document.getElementById("progressBar").style.width = scrolled + "%";
-}
-
-function toggleCode(id) {
-  var block = document.getElementById(id);
-  if (block.style.maxHeight) { block.style.maxHeight = null; block.style.opacity = 0; }
-  else { block.style.maxHeight = block.scrollHeight + "px"; block.style.opacity = 1; }
-}
-
-window.onload = function() {
-  document.querySelectorAll('pre code').forEach((block) => {
-    block.innerHTML = block.innerHTML.replace(/(public|private|protected|class|void|new|throws|return)/g, '<span style="color:#d6336c;">$1</span>')
-                                     .replace(/(if|else|for|while|try|catch|break|continue)/g, '<span style="color:#f76707;">$1</span>')
-                                     .replace(/(String|int|boolean|double|float|List|ArrayList|Map|HashMap)/g, '<span style="color:#0ca678;">$1</span>');
-  });
-};
-</script>
-
-<!-- Landbot Chatbot Embed -->
-<script>
-window.addEventListener('mouseover', initLandbot, { once: true });
-window.addEventListener('touchstart', initLandbot, { once: true });
-var myLandbot;
-function initLandbot() {
-  if (!myLandbot) {
-    var s = document.createElement('script');
-    s.type = "module"
-    s.async = true;
-    s.addEventListener('load', function() {
-      var myLandbot = new Landbot.Livechat({
-        configUrl: 'https://storage.googleapis.com/landbot.site/v3/H-2974405-QAF9156RS2C7SEU5/index.json',
+    // Code toggles
+    function setCodeMaxHeight(pre, open){
+      if(open){
+        pre.style.maxHeight = pre.scrollHeight + 'px';
+        pre.style.opacity = 1;
+      } else {
+        pre.style.maxHeight = null;
+        pre.style.opacity = 0;
+      }
+    }
+    document.querySelectorAll('.toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const pre = document.getElementById(btn.dataset.target);
+        const open = !pre.style.maxHeight;
+        setCodeMaxHeight(pre, open);
       });
     });
-    s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs';
-    var x = document.getElementsByTagName('script')[0];
-    x.parentNode.insertBefore(s, x);
-  }
-}
-</script>
 
+    // Simple syntax highlight (lightweight)
+    function highlight(){
+      document.querySelectorAll('pre code').forEach(block => {
+        block.innerHTML = block.innerHTML
+          .replace(/\b(public|private|protected|class|void|new|throws|return|static|final)\b/g, '<span class="token-key">$1<\/span>')
+          .replace(/\b(if|else|for|while|try|catch|break|continue)\b/g, '<span class="token-flow">$1<\/span>')
+          .replace(/\b(String|int|boolean|double|float|List|ArrayList|Map|HashMap)\b/g, '<span class="token-type">$1<\/span>');
+      });
+    }
+
+    // Reveal on view (with reduced motion respect)
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!prefersReduced){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el=> el.classList.add('in'));
+    }
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const stored = localStorage.getItem('theme');
+    if(stored) document.documentElement.setAttribute('data-theme', stored);
+    themeToggle.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', ()=>{
+      const cur = document.documentElement.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
+    });
+
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', ()=>{
+      navLinks.classList.toggle('open');
+    });
+
+    // Init highlight after load
+    window.addEventListener('load', highlight);
+  </script>
+
+  <!-- Landbot Chatbot (lazy) -->
+  <script>
+    window.addEventListener('mouseover', initLandbot, { once: true });
+    window.addEventListener('touchstart', initLandbot, { once: true });
+    var myLandbot;
+    function initLandbot() {
+      if (!myLandbot) {
+        var s = document.createElement('script');
+        s.type = 'module';
+        s.async = true;
+        s.addEventListener('load', function() {
+          var myLandbot = new Landbot.Livechat({
+            configUrl: 'https://storage.googleapis.com/landbot.site/v3/H-2974405-QAF9156RS2C7SEU5/index.json',
+          });
+        });
+        s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      }
+    }
+  </script>
 </body>
 </html>
